@@ -18,9 +18,9 @@ function Home() {
   );
   const [isCompiling, setIsCompiling] = useState(false);
 
-  const handleCompile: React.MouseEventHandler<HTMLButtonElement> = async (
-    event
-  ) => {
+  const handleCompile: React.MouseEventHandler<
+    HTMLButtonElement
+  > = async () => {
     if (editorTextState.current) {
       const texData = editorTextState.current.getValue();
       setIsCompiling(true);
