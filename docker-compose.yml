@@ -1,0 +1,25 @@
+version: "3.9"
+
+
+services:
+  latex-backend:
+    build: 
+      context: ./backend
+      dockerfile: Dockerfile
+    container_name: latex-backend
+    ports:
+      - "8000:8000"
+    environment:
+      - ENV=development
+    restart: unless-stopped
+
+  latex-frontend:
+    build:
+      context: ./frontend
+      dockerfile: Dockerfile
+    container_name: latex-frontend
+    ports:
+      - "5173:5173"
+    environment:
+      - ENV=development
+    restart: unless-stopped
