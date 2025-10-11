@@ -3,8 +3,9 @@ import type * as monaco from "monaco-editor";
 import { Code2 } from "lucide-react";
 type EditorProps = {
   texContent: React.RefObject<monaco.editor.IStandaloneCodeEditor | null>;
+  onChange?: (value: string) => void;
 };
-function Monaco({ texContent }: EditorProps) {
+function Monaco({ texContent, onChange }: EditorProps) {
   const handleTexMount = (editor: monaco.editor.IStandaloneCodeEditor) => {
     texContent.current = editor;
   };
@@ -19,6 +20,9 @@ function Monaco({ texContent }: EditorProps) {
         height="100%"
         defaultLanguage="latex"
         onMount={handleTexMount}
+        onChange={(value) => {
+          if (value) onChange?.(value);
+        }}
         theme="light"
         options={{
           fontSize: 14,
